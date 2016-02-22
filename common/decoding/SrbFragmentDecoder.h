@@ -41,7 +41,7 @@ struct SrbData {
 }__attribute__ ((__packed__));
 
 struct SrbTimeSlot {
-    uint SlotCounter : 8;
+	uint SlotCounter :8;
 }__attribute__ ((__packed__));
 
 class SrbFragmentDecoder: private boost::noncopyable {
@@ -86,7 +86,10 @@ public:
 	inline const uint64_t* getStrawIDs() const {
 		return edgeStrawIDs;
 	}
-	//todo: check if this is necessary or fragmentNumber_ can be used, or it can be reconstructed by strawIDs
+	/**
+	 * Method returning Srb ID for the current fragment
+	 *
+	 */
 	inline const uint64_t* getSrbIDs() const {
 		return edgeSrbIDs;
 	}
@@ -121,7 +124,7 @@ private:
 	 *
 	 */
 
-    //check data types for the following
+	//check data types for the following
 	double* edgeTimes;
 	bool* edgeIsLeading;
 	uint64_t* edgeStrawIDs;

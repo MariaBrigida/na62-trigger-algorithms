@@ -30,10 +30,10 @@ class Event;
 /*
  * Define a macro to add functionality for a detector
  */
-#define ADD_TRB(DETECTOR)		\
-\
-private: 						\
-                                \
+#define ADD_TRB(DETECTOR)																										\
+																																\
+private: 																														\
+                                																								\
     std::unique_ptr<TrbFragmentDecoder, std::function<void(TrbFragmentDecoder*)>> DETECTOR##Decoders; /* One TrbFragmentDecoder for every MEP fragment 	*/ \
     /**																															\
 	 * This method must be called before you access the DETECTOR##Decoders														\
@@ -87,10 +87,10 @@ public: 																														\
 																		\
 	}																	\
 
-#define ADD_SRB(DETECTOR)		\
-\
-private: 						\
-                                \
+#define ADD_SRB(DETECTOR)		      									\
+																		\
+private: 																\
+																		\
     std::unique_ptr<SrbFragmentDecoder, std::function<void(SrbFragmentDecoder*)>> DETECTOR##Decoders; /* One TrbFragmentDecoder for every MEP fragment 	*/ \
     /**																															\
 	 * This method must be called before you access the DETECTOR##Decoders														\
