@@ -34,9 +34,9 @@ struct SrbDataHeader {
  */
 struct SrbData {
 //  uint32_t srbWord :32;
-	uint fineTime :5; //hit time (LSB = 780 ps)
+	uint fineTime :5;      //hit time (LSB = 780 ps)
 	uint edgeType :1;      //edge type (0=leading, 1=trailing)
-	uint strawID :8;     //identifier of the individual straw
+	uint strawID :8;       //identifier of the individual straw
 	uint errorFlag :2;
 }__attribute__ ((__packed__));
 
@@ -64,7 +64,7 @@ public:
 	void readData(uint_fast32_t timestamp);
 
 	/**
-	 * Method returning the total number of edges found per Tel62 board
+	 * Method returning the total number of edges found per Srb
 	 *
 	 */
 	inline uint getNumberOfEdgesStored() const {
@@ -83,14 +83,15 @@ public:
 	 * Method returning an array of edge Straw IDs
 	 *
 	 */
-	inline const uint64_t* getStrawIDs() const {
+	inline const uint_fast8_t* getStrawIDs() const {
 		return edgeStrawIDs;
 	}
+
 	/**
-	 * Method returning Srb ID for the current fragment
+	 * Method returning Srb ID for current fragment
 	 *
 	 */
-	inline const uint64_t* getSrbIDs() const {
+	inline const uint_fast8_t* getSrbIDs() const {
 		return edgeSrbIDs;
 	}
 
@@ -103,7 +104,7 @@ public:
 	}
 
 	/**
-	 * Returns the subdetector specific ID of the fragment decoded by this object
+	 * Returns the Srb specific ID of the fragment decoded by this object
 	 */
 	inline const uint_fast16_t getFragmentNumber() const {
 		return fragmentNumber_;
@@ -126,10 +127,10 @@ private:
 
 	//check data types for the following
 	double* edgeTimes;
-	bool* edgeIsLeading;
-	uint64_t* edgeStrawIDs;
-	uint64_t* edgeSrbIDs;
+	uint_fast8_t* edgeStrawIDs;
+	uint_fast8_t* edgeSrbIDs;
 	uint_fast8_t * edgeErrorFlags;
+	bool* edgeIsLeading;
 
 	const l0::Subevent* subevent_;
 	uint_fast16_t fragmentNumber_;

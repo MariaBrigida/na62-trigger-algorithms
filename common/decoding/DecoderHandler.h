@@ -34,7 +34,7 @@ class Event;
 																																\
 private: 																														\
                                 																								\
-    std::unique_ptr<TrbFragmentDecoder, std::function<void(TrbFragmentDecoder*)>> DETECTOR##Decoders; /* One TrbFragmentDecoder for every MEP fragment 	*/ \
+    std::unique_ptr<TrbFragmentDecoder, std::function<void(TrbFragmentDecoder*)>> DETECTOR##Decoders; /* One SrbFragmentDecoder for every MEP fragment 	*/ \
     /**																															\
 	 * This method must be called before you access the DETECTOR##Decoders														\
 	 * It prepares the decoding if it has not already been done (idempotence)													\
@@ -87,10 +87,10 @@ public: 																														\
 																		\
 	}																	\
 
-#define ADD_SRB(DETECTOR)		      									\
+#define ADD_SRB(DETECTOR)												\
 																		\
 private: 																\
-																		\
+                                										\
     std::unique_ptr<SrbFragmentDecoder, std::function<void(SrbFragmentDecoder*)>> DETECTOR##Decoders; /* One TrbFragmentDecoder for every MEP fragment 	*/ \
     /**																															\
 	 * This method must be called before you access the DETECTOR##Decoders														\
@@ -170,6 +170,8 @@ ADD_TRB(CHOD)
 ADD_TRB(LAV)
 
 ADD_SRB(STRAW)
+
+ADD_TRB(MUV3)
 
 private:
 	Event* const event_;
